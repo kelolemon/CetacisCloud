@@ -22,6 +22,7 @@ func PostLogin(ctx iris.Context) {
 		}
 		ctx.ContentType("application/json")
 		_, _ = ctx.JSON(RtData)
+		return
 	} else {
 		RtData := flag {
 			Success: "0",
