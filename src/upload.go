@@ -29,4 +29,9 @@ func PostUpload(ctx iris.Context) {
 	}
 	defer out.Close()
 	_, _ = io.Copy(out, file)
+	RtData := flag {
+		Success: "1",
+	}
+	ctx.ContentType("application/json")
+	_, _ = ctx.JSON(RtData)
 }

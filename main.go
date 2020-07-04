@@ -30,6 +30,14 @@ func main() {
 	api.Post("/logout", src.PostLogout)
 
 	api.Get("/check", src.IsLog)
+
+	api.Get("/files", src.GetFileList)
+
+	api.Get("/share/{filename}", src.GetShareLink)
+
+	api.Get("/share/file/{filename}", src.GetShareFile)
+
+	api.Get("/share/delete/{filename}", src.DeleteShareLink)
 	// run the server
 	_ = app.Run(iris.Addr(":8080"))
 }
