@@ -8,6 +8,14 @@ import (
 )
 
 func PostLogin(ctx iris.Context) {
+	if auth, _ := sess.Start(ctx).GetBoolean("IsLog"); auth {
+		RtData := flag {
+			Success: "-1",
+		}
+		ctx.ContentType("application/json")
+		_, _ = ctx.JSON(RtData)
+		return
+	}
 	var Data account
 	bytes, _ := ioutil.ReadFile("./config/account.json")
 	_ = json.Unmarshal(bytes, &Data)

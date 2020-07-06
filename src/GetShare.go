@@ -55,6 +55,13 @@ func DeleteShareLink(ctx iris.Context) {
 	bytes, _ := ioutil.ReadFile(ShareMapPath)
 	m := make(map[string]interface{})
 	_ = json.Unmarshal(bytes, &m)
+	if _, ok := m[filename]; !ok {
+		RtData := flag {
+			Success: "0",
+		}
+		_, _ = ctx.JSON(RtData)
+		return
+	}
 	delete(m, filename)
 	data, _ := json.Marshal(m)
 	_ = ioutil.WriteFile(ShareMapPath, data, 0666)
