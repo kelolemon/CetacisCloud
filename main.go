@@ -38,6 +38,10 @@ func main() {
 	api.Get("/share/file/{filename}", src.GetShareFile)
 
 	api.Get("/share/delete/{filename}", src.DeleteShareLink)
+
+	api.Get("/delete/{filename}", src.GetDelete)
+
+	api.Get("/create/dir/{dirname}", src.CreateDir)
 	// run the server
 	_ = app.Run(iris.Addr(":8080"))
 }
