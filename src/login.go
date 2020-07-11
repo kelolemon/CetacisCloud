@@ -2,7 +2,6 @@ package src
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/kataras/iris"
 	"io/ioutil"
 )
@@ -22,7 +21,6 @@ func PostLogin(ctx iris.Context) {
 	user := ctx.FormValue("user")
 	pass := ctx.FormValue("pass")
 	if user == Data.User && pass == Data.Pass {
-		fmt.Println("Login success")
 		session := sess.Start(ctx)
 		session.Set("IsLog", true)
 		RtData := flag {
